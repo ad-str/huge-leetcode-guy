@@ -47,7 +47,8 @@ class Solution:
         return hashmapS == hashmapT
     
     def isAnagram3(self, s: str, t: str) -> bool:
-        '''Condensed version of my code'''
+        '''Condensed version of my code. You could condense even further by having one for loop since you 
+        know they are the same length'''
         if len(s) != len(t): return False
 
         dicS, dicT = {}, {} # uses multiple assignment 
