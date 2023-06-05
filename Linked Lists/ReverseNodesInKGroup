@@ -1,0 +1,88 @@
+from typing import Optional
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        '''My attempt. I didn't have enough time to figure out how to deal with left-out groups'''
+        dummy = ListNode(0)
+        prevTail = dummy
+        nextTail = None
+        
+        no = k
+
+        cur = head
+        prev = None
+        while cur:
+            tmp = cur.next
+            if no == k: # this is the start of a new group
+                nextTail = cur
+                prev = cur
+                no -= 1
+            elif no == 1: # end of a group
+                cur.next = prev
+                prevTail.next = cur
+                prevTail = nextTail
+                no = k # reset k
+            else: # middle of group
+                cur.next = prev
+                prev = cur
+                no -= 1
+
+            cur = tmp
+        
+        return dummy.next
+    
+
+    def reverseKGroup2(self, head: ListNode, k: int) -> ListNode:
+        '''Solution. It hinges on a helper function that finds the endpoint of each group.
+        If the endpoint is none, then we know we are at the left-out elements and do nothing. 
+        When reversing the group, it doesn't split into three conditions like me. It does something
+        more clever by making prev equal to the next group's start and loops until curr is not equal 
+        to the next group. So basically before reversing anything it firsts finds the next group, 
+        whereas I tried reversing first then going to the next group which is where I was having problems
+        figuring out what to do with the left-out elements.'''
+        dummy = ListNode(0, head)
+        groupPrev = dummy
+
+        while True:
+            kth = self.getKth(groupPrev, k)
+            if not kth:
+                break
+            groupNext = kth.next
+
+            # reverse group
+            prev, curr = kth.next, groupPrev.next
+            while curr != groupNext:
+                tmp = curr.next
+                curr.next = prev
+                prev = curr
+                curr = tmp
+
+            tmp = groupPrev.next
+            groupPrev.next = kth
+            groupPrev = tmp
+        return dummy.next
+
+    def getKth(self, curr, k):
+        while curr and k > 0:
+            curr = curr.next
+            k -= 1
+        return curr
+
+
+
+if __name__ == "__main__":
+    solution = Solution()
+
+    head = ListNode(1)
+    cur = head
+    for i in range(2,6):
+        cur.next = ListNode(i)
+        cur = cur.next
+
+    print(solution.reverseKGroup(head, 2))
