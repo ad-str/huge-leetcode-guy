@@ -22,7 +22,8 @@ class Solution:
         return matrix
     
 '''Looked up other solutions to see if there was a solution with smaller space complexity. This implementation is O(1) space 
-complexity but for some reason is larger space than my previous implementation according to leetcode'''
+complexity but for some reason is larger space than my previous implementation according to leetcode. But anyway, the idea is
+to keep track of which cells to change by using the first row and column instead of storing in a set. Clever.'''
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         """
