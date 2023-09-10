@@ -17,7 +17,7 @@ class Solution:
     '''
     Similar idea using dynamic programming but slightly different. This hinges on the fact that doubling a binary number simply just
     adds a 0 to the right so the double of a number has the exact same number of 1 bits. Thus if we divide by 2 (right shift one) we
-    should get a number with the exact same number of 1 bits, but maybe plus 1 if the number we divided was odd.
+    should get a number with the exact same number of 1 bits, but maybe plus 1 if the number we divided was odd. 
     '''
     def countBits(self, num: int) -> List[int]:
         counter = [0]
