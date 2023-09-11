@@ -1,0 +1,7 @@
+unicomp6.unicomp.net - - [01/Jul/1995ajasjkdnas] "GET ahjsdfa" 200 2910
+unicomp6.unicomp.net - - [01/Jul/1995ajasjkdnas] "GET ahjsdfa" 200 5001
+unicomp6.unicomp.net - - [01/Jul/1995ajasjkdnas] "GET ahjsdfa" 200 10000
+unicomp6.unicomp.net - - [01/Jul/1995ajasjkdnas] "GET ahjsdfa" 200 6000
+unicomp6.unicomp.net - - [01/Jul/1995ajasjkdnas] "GET ahjsdfa" 200 2000
+unicomp6.unicomp.net - - [01/Jul/1995ajasjkdnas] "GET ahjsdfa" 200 2910
+unicomp6.unicomp.net - - [01/Jul/1995ajasjkdnas] "GET ahjsdfa" 200 1
