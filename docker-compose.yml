@@ -1,0 +1,7 @@
+services:
+  code:
+    container_name: hlg_container
+    build: .
+    volumes:
+      - .:/code
+    command: /bin/bash
