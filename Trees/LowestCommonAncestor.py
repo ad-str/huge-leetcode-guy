@@ -70,3 +70,32 @@ class Solution2:
             return self.lowestCommonAncestor(root.right, p, q)
         else:
             return self.lowestCommonAncestor(root.left, p, q)
+
+# 2024-08-04
+class Solution3:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if p.val > q.val:
+            b = p
+            s = q
+        else:
+            b = q
+            s = p 
+
+        def dfs(node):
+            if s.val <= node.val <= b.val:
+                return node
+            elif b.val < node.val:
+                return dfs(node.left)
+            elif node.val < s.val:
+                return dfs(node.right)
+        
+        return dfs(root)
+    
+    def optimal(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        while True:
+            if root.val < p.val and root.val < q.val:
+                root = root.right
+            elif root.val > p.val and root.val > q.val:
+                root = root.left
+            else:
+                return root

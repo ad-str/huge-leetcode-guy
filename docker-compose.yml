@@ -4,4 +4,4 @@ services:
     build: .
     volumes:
       - .:/code
-    command: /bin/bash
+    command: tail -f /dev/null
